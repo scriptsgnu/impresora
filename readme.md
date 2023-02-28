@@ -34,6 +34,11 @@
   Ejemplo  
   ---- > impresora.sh -d
   
+  **-h**
+  : muestra la ayuda del programa  
+  Ejemplo  
+  ---- > impresora.sh -h
+  
 # MIRAR
 
   lpstat -a, lpstat -p -d
@@ -45,7 +50,7 @@
   
 # ESTRUCTURA Y ARCHIVOS DEL PROGRAMA
 
-  deb/  
+ deb/  
 ├── DEBIAN  
 │   └── control  
 ├── etc  
@@ -55,7 +60,8 @@
 │   └── impresora  
 │       ├── config  
 │       ├── contador.sh  
-│       └── fiestas.sh  
+│       ├── fiestas.sh  
+│       └── readme.1  
 └── usr  
     ├── bin  
     │   └── impresora.sh  

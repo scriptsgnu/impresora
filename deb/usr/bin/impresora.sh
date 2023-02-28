@@ -3,6 +3,11 @@ if [[ $# -eq 1 ]] && [[ $1 = "-d" ]]
 then
 	cat /opt/impresora/config
 	exit
+elif [[ $# -eq 1 ]] && [[ $1 = "-h" ]]
+then
+	man -l /opt/impresora/readme.1
+else
+	man -l /opt/impresora/readme.1
 fi
 if [[ $# -eq 2 ]]
 then
