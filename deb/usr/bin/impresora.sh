@@ -6,7 +6,8 @@ then
 elif [[ $# -eq 1 ]] && [[ $1 = "-h" ]]
 then
 	man -l /opt/impresora/readme.1
-else
+elif [[ $# -eq 0 ]]
+then
 	man -l /opt/impresora/readme.1
 fi
 if [[ $# -eq 2 ]]

@@ -11,7 +11,11 @@ fi
 imprime ()
 {
 	cupsdisable $impre
+	sleep 6
 	lp -P $1 $2 -d $impre
+	sleep 6
+	cupsenable $impre
+	sleep 60
 	cupsenable $impre
 }
 imprimir () 
@@ -21,13 +25,13 @@ imprimir ()
 	if [[ $aleatorio -eq 0 ]]
 	then
 		#descarga la página y la convierte a pdf
-		wget https://www.eltiempo.es/valladolid.html
+		wget -O valladolid.html https://www.eltiempo.es/valladolid.html
 		wkhtmltopdf valladolid.html valladolid.pdf
 		imprime 2 "valladolid.pdf"
 	else
 		wget -O eldiario.html eldiario.es/rss
 		wkhtmltopdf eldiario.html eldiario.pdf
-		numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "Yolanda" rss.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
+		numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "Yolanda" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
 		imprime $numpag "eldiario.pdf"
 	fi
 	
@@ -70,5 +74,5 @@ do
 	else
 		expresion
 	fi
-	sleep 600
+	sleep 60
 done
