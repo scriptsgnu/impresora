@@ -2,7 +2,7 @@
 
 if [[ $# -eq 0 ]]
 then
-	echo "Modeo de empleo: /etc/init.d/impresora.sh {start|stop}"
+	echo "Modo de empleo: /etc/init.d/impresora.sh {start|stop}"
 elif [[ $1 = "start" ]]
 then
 	echo "Iniciando Servicio..."

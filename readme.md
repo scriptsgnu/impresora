@@ -1,11 +1,11 @@
 # NOMBRE
 
- impresora - Evita que los inyectores se sequen
+ impresora.sh - Evita que los inyectores se sequen
  imprimiendo una página cada un intervalo de días
  
 # SINOPSIS
-  **impresora** [*OPCION*]  
-  **impresora** [-a|-b|-c|-d]
+  **impresora.sh** [*OPCION*]  
+  **impresora.sh** [-a|-b|-c|-d]
   
 # DESCRIPCIÓN
 
@@ -17,22 +17,22 @@
   **-a** [1-7]-[1-23]-[1-23]
   : programa una impresión cada un intervalo de días, a unas horas entre lúnes y viernes.  
   Ejemplo, cada 5 días entre las 12 y las 15  
-  ---- > impresora -a 5-12-15
+  ---- > impresora.sh -a 5-12-15
   
   **-b** [1-23]-[1-23]
   : programa un intervalo de horas para los sábados y domingos  
   Ejemplo  
-  ---- > impresora -b 14-16
+  ---- > impresora.sh -b 14-16
   
   **-c** [IMPRESORA]
   : guarda con qué impresora se imprimirá (para saber el nombre de tu impresora con lpstat -a)  
   Ejemplo  
-  ---- > impresora -c EPSON
+  ---- > impresora.sh -c EPSON
   
   **-d**
   : muestra los datos del fichero de configuración  
   Ejemplo  
-  ---- > impresora -d
+  ---- > impresora.sh -d
   
 # MIRAR
 
@@ -43,9 +43,26 @@
   github/bugs  
 
   
-# ARCHIVOS
+# ESTRUCTURA Y ARCHIVOS DEL PROGRAMA
 
-  contador.sh, fiestas.sh, config
+  deb/  
+├── DEBIAN  
+│   └── control  
+├── etc  
+│   └── init.d  
+│       └── impresora.sh  
+├── opt  
+│   └── impresora  
+│       ├── config  
+│       ├── contador.sh  
+│       └── fiestas.sh  
+└── usr  
+    ├── bin  
+    │   └── impresora.sh  
+    └── local  
+        └── share  
+            └── man  
+                └── impresora.1.gz  
   
 # AUTOR
 
