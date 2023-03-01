@@ -48,7 +48,8 @@
 
   sudo /etc/init.d/impresora.sh start  
   sudo /etc/init.d/impresora.sh stop  
-  sudo update-rc.d impresora.sh defaults
+  sudo update-rc.d impresora.sh defaults  
+  sudo update-rc.d -f impresora.sh remove
   
 # MIRAR
 
