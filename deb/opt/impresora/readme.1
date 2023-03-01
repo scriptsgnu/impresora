@@ -29,7 +29,7 @@ Ejemplo, cada 5 d\['i]as entre las 12 y las 15
 .PD 0
 .P
 .PD
-\[em]- > impresora.sh -a 5-12-15
+\[em]- > sudo impresora.sh -a 5-12-15
 .TP
 \f[B]-b\f[R] [1-23]-[1-23]
 programa un intervalo de horas para los s\['a]bados y domingos
@@ -40,7 +40,7 @@ Ejemplo
 .PD 0
 .P
 .PD
-\[em]- > impresora.sh -b 14-16
+\[em]- > sudo impresora.sh -b 14-16
 .TP
 \f[B]-c\f[R] [IMPRESORA]
 guarda con qu\['e] impresora se imprimir\['a] (para saber el nombre de
@@ -52,7 +52,7 @@ Ejemplo
 .PD 0
 .P
 .PD
-\[em]- > impresora.sh -c EPSON
+\[em]- > sudo impresora.sh -c EPSON
 .TP
 \f[B]-d\f[R]
 muestra los datos del fichero de configuraci\['o]n
@@ -65,6 +65,20 @@ Ejemplo
 .PD
 \[em]- > impresora.sh -d
 .TP
+\f[B]-e\f[R] [TEXTO]
+guarda que cadena de texto buscar\['a] en una p\['a]gina de noticias, si
+la encuentra la imprimir\['a], sino otra al azar, pero puede que imprima
+la p\['a]gina del tiempo por azar o te avise de si es fiesta (debes
+adaptar fiestas.sh a las de tu provincia)
+.PD 0
+.P
+.PD
+Ejemplo
+.PD 0
+.P
+.PD
+\[em]- > sudo impresora.sh -e Yolanda
+.TP
 \f[B]-h\f[R]
 muestra la ayuda del programa
 .PD 0
@@ -75,6 +89,17 @@ Ejemplo
 .P
 .PD
 \[em]- > impresora.sh -h
+.SH COMANDOS NECESARIOS
+.PP
+sudo /etc/init.d/impresora.sh start
+.PD 0
+.P
+.PD
+sudo /etc/init.d/impresora.sh stop
+.PD 0
+.P
+.PD
+sudo update-rc.d impresora.sh defaults
 .SH MIRAR
 .PP
 lpstat -a, lpstat -p -d

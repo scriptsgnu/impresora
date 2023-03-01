@@ -31,8 +31,15 @@ imprimir ()
 	else
 		wget -O eldiario.html eldiario.es/rss
 		wkhtmltopdf eldiario.html eldiario.pdf
-		numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "Yolanda" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
-		imprime $numpag "eldiario.pdf"
+		numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "$(cat config | sed -n '4p')" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
+		if [[ $numpag = "" ]]
+		then
+			numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "a" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
+			aleatorio=$((1+RANDOM%$numpag))
+			imprime $aleatorio "eldiario.pdf"
+		else
+			imprime $numpag "eldiario.pdf"
+		fi
 	fi
 	
 }

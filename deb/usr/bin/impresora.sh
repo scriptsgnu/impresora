@@ -23,6 +23,9 @@ then
 	elif [[ $1 = "-c" ]]
 	then
 		sed -i "3 s/^.*$/$2/g" /opt/impresora/config
+	elif [[ $1 = "-e" ]]
+	then
+		sed -i "4 s/^.*$/$2/g" /opt/impresora/config
 	fi
 	exit
 fi
