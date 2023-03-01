@@ -46,6 +46,7 @@ imprimir ()
 }
 for ((;;))
 do
+	sleep 100
 	if [ -f $FICHERO ] 
 	then
 		hora=`date +%H | sed -e 's/^0//g'`
@@ -82,5 +83,4 @@ do
 	else
 		expresion
 	fi
-	sleep 60
 done
