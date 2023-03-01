@@ -5,6 +5,7 @@ FICHERO=contador
 impre=`cat config | sed -n '3p'`
 if [ "$impre" = "---" ]
 then
+	sleep 100
 	sed -i "3 s/^.*$/$(lpstat -a | cut -d ' ' -f1)/g" config
 	impre=`lpstat -a | cut -d ' ' -f1`
 fi
