@@ -12,7 +12,7 @@ p\['a]gina cada un intervalo de d\['i]as
 .PD 0
 .P
 .PD
-\f[B]impresora.sh\f[R] [-a|-b|-c|-d]
+\f[B]impresora.sh\f[R] [\f[I]OPCION\f[R]]\&...[ARGUMENTO]
 .SH DESCRIPCI\['O]N
 .PP
 script escrito en bash que sirve para programar la impresi\['o]n de una
@@ -89,23 +89,40 @@ Ejemplo
 .P
 .PD
 \[em]- > impresora.sh -h
+.TP
+\f[B]-v\f[R]
+muestra la versi\['o]n del script
+.PD 0
+.P
+.PD
+Ejemplo
+.PD 0
+.P
+.PD
+\[em]- > impresora.sh -v
 .SH COMANDOS NECESARIOS
 .PP
-sudo /etc/init.d/impresora.sh start
+sudo /etc/init.d/impresora.sh start (inicia el script)
 .PD 0
 .P
 .PD
-sudo /etc/init.d/impresora.sh stop
+sudo /etc/init.d/impresora.sh stop (detiene el script)
 .PD 0
 .P
 .PD
-sudo update-rc.d impresora.sh defaults
+sudo update-rc.d impresora.sh defaults (crea un link e inicia el script
+cada vez que arranca el ordenador)
+.PD 0
+.P
+.PD
+sudo update-rc.d -f impresora.sh remove (borra el link y no se inicia el
+script cada vez que arranca el ordenador)
 .SH MIRAR
 .PP
 lpstat -a, lpstat -p -d
 .SH REPORTAR BUGS A
 .PP
-github/bugs
+scriptsgnulinux\[at]gmail.com
 .SH ESTRUCTURA Y ARCHIVOS DEL PROGRAMA
 .PP
 deb/
@@ -188,6 +205,13 @@ Escrito por scriptsgnulinux
 .P
 .PD
 https://youtube.com/\[at]scriptsgnulinux
+.PD 0
+.P
+.PD
+scriptsgnulinux\[at]gmail.com
+.SH VIDEOTUTORIALES DEL SCRIPT
+.PP
+https://youtube.com/playlist?list=PL4oUZG0zEgsjEaxYCSJNHBeZ3qi_ljKsD
 .SH COPYRIGHT
 .PP
 Boost Software License 1.0

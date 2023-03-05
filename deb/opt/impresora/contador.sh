@@ -21,28 +21,43 @@ imprime ()
 }
 imprimir () 
 {
-	aleatorio=$((RANDOM%3))
-	echo 'imprimir'
-	if [[ $aleatorio -eq 0 ]]
+	if  curl eldiario.es &>/dev/null && curl eltiempo.es &>/dev/null
 	then
-		#descarga la página y la convierte a pdf
-		wget -O valladolid.html https://www.eltiempo.es/valladolid.html
-		wkhtmltopdf valladolid.html valladolid.pdf
-		imprime 2 "valladolid.pdf"
-	else
-		wget -O eldiario.html eldiario.es/rss
-		wkhtmltopdf eldiario.html eldiario.pdf
-		numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "$(cat config | sed -n '4p')" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
-		if [[ $numpag = "" ]]
+		aleatorio=$((RANDOM%3))
+		echo 'imprimir'
+		if [[ $aleatorio -eq 0 ]]
 		then
-			numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "a" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
-			aleatorio=$((1+RANDOM%$numpag))
-			imprime $aleatorio "eldiario.pdf"
+			#descarga la página y la convierte a pdf
+			curl -Lo valladolid.html https://www.eltiempo.es/valladolid.html
+			wkhtmltopdf valladolid.html valladolid.pdf
+			imprime 2 "valladolid.pdf"
 		else
-			imprime $numpag "eldiario.pdf"
+			curl -Lo eldiario.html eldiario.es/rss
+			wkhtmltopdf eldiario.html eldiario.pdf
+			numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "$(cat config | sed -n '4p')" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
+			if [[ $numpag = "" ]]
+			then
+				numpag=`sort -r -n -k 2 -t: <((pdfgrep -p "a" eldiario.pdf)) | sed -n "1 p" | sed 's/:.*$//g'`
+				aleatorio=$((1+RANDOM%$numpag))
+				imprime $aleatorio "eldiario.pdf"
+			else
+				imprime $numpag "eldiario.pdf"
+			fi
+		fi
+	else
+		if ping -c1 google.com &>/dev/null
+		then
+			sed -i "4 s/^.*$/date: `date '+%A %d %B %Y'`/g" conexion.md
+			sed -i "8 s/^.*$/Alguna página está caida, eltiempo.es o eldiario.es/g" conexion.md
+			pandoc conexion.md -o conexion.pdf
+			imprime 1 "conexion.pdf"
+		else
+			sed -i "4 s/^.*$/date: `date '+%A %d %B %Y'`/g" conexion.md
+			sed -i "8 s/^.*$/google está caído o no hay internet/g" conexion.md
+			pandoc conexion.md -o conexion.pdf
+			imprime 1 "conexion.pdf"
 		fi
 	fi
-	
 }
 for ((;;))
 do

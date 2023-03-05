@@ -5,7 +5,7 @@
  
 # SINOPSIS
   **impresora.sh** [*OPCION*]  
-  **impresora.sh** [-a|-b|-c|-d]
+  **impresora.sh** [*OPCION*]...[ARGUMENTO]
   
 # DESCRIPCIÓN
 
@@ -42,14 +42,19 @@
   **-h**
   : muestra la ayuda del programa  
   Ejemplo  
-  ---- > impresora.sh -h
+  ---- > impresora.sh -h  
+  
+  **-v**
+  : muestra la versión del script  
+  Ejemplo  
+  ---- > impresora.sh -v  
   
 # COMANDOS NECESARIOS
 
-  sudo /etc/init.d/impresora.sh start  
-  sudo /etc/init.d/impresora.sh stop  
-  sudo update-rc.d impresora.sh defaults  
-  sudo update-rc.d -f impresora.sh remove
+  sudo /etc/init.d/impresora.sh start (inicia el script)  
+  sudo /etc/init.d/impresora.sh stop (detiene el script)  
+  sudo update-rc.d impresora.sh defaults (crea un link e inicia el script cada vez que arranca el ordenador)  
+  sudo update-rc.d -f impresora.sh remove (borra el link y no se inicia el script cada vez que arranca el ordenador)  
   
 # MIRAR
 
@@ -57,7 +62,7 @@
   
 # REPORTAR BUGS A
 
-  github/bugs  
+  scriptsgnulinux@gmail.com 
 
   
 # ESTRUCTURA Y ARCHIVOS DEL PROGRAMA
@@ -85,7 +90,13 @@
 # AUTOR
 
   Escrito por scriptsgnulinux  
-  https://youtube.com/@scriptsgnulinux
+  https://youtube.com/@scriptsgnulinux  
+  scriptsgnulinux@gmail.com  
+  
+# VIDEOTUTORIALES DEL SCRIPT
+
+  https://youtube.com/playlist?list=PL4oUZG0zEgsjEaxYCSJNHBeZ3qi_ljKsD  
+  
   
 # COPYRIGHT
 
