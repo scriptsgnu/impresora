@@ -2,7 +2,7 @@ Package: impresora
 Priority: optional
 Maintainer: scriptsgnulinux <scriptsgnulinux@gmail.com>
 Architecture: all
-Version: 1.0.0
+Version: 1.0.1
 Depends: pdfgrep, sed, curl, wkhtmltopdf, pandoc
 Description: Conjunto de scripts para el mantenimiento de la impresora
  Se imprimirá una página cada 5 días (según las horas definidas) que evitará

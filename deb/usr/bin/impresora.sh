@@ -8,7 +8,7 @@ then
 	man -l /opt/impresora/readme.1
 elif [[ $# -eq 1 ]] && [[ $1 = "-v" ]]
 then
-	echo "versión 1.0.0"
+	echo "versión 1.0.1"
 elif [[ $# -eq 0 ]]
 then
 	man -l /opt/impresora/readme.1
